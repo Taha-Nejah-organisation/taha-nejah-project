@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
+  </head>
+  <body>
+   <div id ="firstOne"> 
+    <input type="text" name="txt">
+    <button>ADD TWEET</button>
+   </div> 
+    <div id="firsttweet"></div>
+    <div id="default"></div>
+
+
+
+    <script>
+      $(document).ready(function(){
+        var $body = $('body');
+        var index = streams.home.length - 1;
+        var name = prompt("enter your name")
+        while(index >= 0){
+          var tweet = streams.home[index];
+          var $tweet = $('<div></div>');
+          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.appendTo('#default');
+          index -= 1;
+        }
+
+        var first = $('#firsttweet')
+        $("button").click(function(){
+          var value = $('input').val();
+          $('div:last-child').remove();
+          $(first).prepend('<section>'+'@'+name+' : '+value+'</section>');
+          })
+
+
+      });
+
+    </script>
+  </body>
+</html>
